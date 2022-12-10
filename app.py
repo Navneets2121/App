@@ -90,7 +90,7 @@ def searchGoogle(query):
 
 def news():
   newsapi = NewsApiClient(api_key = '99ccfefa3dfe4abc824d337eaa9e4a8a')
-  topic = input("Please tell me the topic you want to hear updates : ")
+  topic = request.args.get('topic')
   data = newsapi.get_top_headlines(q=topic, language='en', page_size=5)
   newsdata = data['articles']
   newlist = [("Latest news updates about the topic " + topic + " are : ")]
@@ -171,9 +171,9 @@ def bot(msg):
         subject = input("Please enter subject of the mail : ")
         content = input("Please enter content of the mail : ")
         sendEmail(receiver, subject, content)
-        print("email has been sent")
+        return("email has been sent")
       except Exception as e:
-        print(e)
+        return("404")
       continue
 
     if 'message' in query:
