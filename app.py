@@ -167,9 +167,9 @@ def bot(msg):
     if 'email' in query:
       flag = False
       try:
-        receiver = input("Please enter receiver's mail : ")
-        subject = input("Please enter subject of the mail : ")
-        content = input("Please enter content of the mail : ")
+        receiver = request.args.get('receiver')
+        subject = request.args.get('subject')
+        content = request.args.get('content')
         sendEmail(receiver, subject, content)
         return("email has been sent")
       except Exception as e:
@@ -206,7 +206,7 @@ def bot(msg):
 
     if 'weather' in query:
       flag = False
-      city = input("Please tell me the location you want to know weather updates : ")
+      city = request.args.get('city')
       url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid=24a0a5534a7ced33763b94acb9e7d058'
 
       res = requests.get(url)
