@@ -264,7 +264,7 @@ app= Flask(__name__)
 def home():
     return "Welcome to ChatBot"
 
-@app.route('/bot', methods=['POST'])
+@app.route('/bot', methods=['GET'])
 def get_bot_response():
     userText = request.args.get('msg')
     
