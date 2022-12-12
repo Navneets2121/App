@@ -221,7 +221,9 @@ def bot(msg):
 
     if 'news' in query:
       flag = False
-      List.append(news())
+      res=news()
+      for r in res:
+        List.append(r)
 
     if 'joke' in query:
       flag = False
